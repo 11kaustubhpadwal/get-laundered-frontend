@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import BleachingImage from "../../../assets/bleachingService.svg";
 import Grid from "@material-ui/core/Grid";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles({
   services: {
@@ -33,39 +34,41 @@ const BleachingService = () => {
       }}
     >
       <Grid item xs={12} sm={12} md={12} lg={12} className={classes.root}>
-        <Card className={classes.services}>
-          <CardActionArea>
-            <CardContent>
-              <img
-                src={BleachingImage}
-                alt="15 kg"
-                style={{ width: "10rem", margin: "10px" }}
-              ></img>
-              <Typography gutterBottom variant="h5" component="h2">
-                Quantity - 1
-              </Typography>
-              <Typography variant="body2" color="textPrimary" component="p">
-                Price - 5 PLN.
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions
-            style={{
-              justifyContent: "center",
-              paddingLeft: "20px",
-              paddingRight: "20px",
-              paddingBottom: "20px",
-            }}
-          >
-            Bleaching of clothes for stain removal costs 5 PLN per piece of
-            cloth (for e.g. Shirt, Jeans, etc.).
-          </CardActions>
-          <CardActions
-            style={{
-              justifyContent: "center",
-            }}
-          ></CardActions>
-        </Card>
+        <Zoom in={true} timeout={1000}>
+          <Card className={classes.services}>
+            <CardActionArea>
+              <CardContent>
+                <img
+                  src={BleachingImage}
+                  alt="15 kg"
+                  style={{ width: "10rem", margin: "10px" }}
+                ></img>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Quantity - 1
+                </Typography>
+                <Typography variant="body2" color="textPrimary" component="p">
+                  Price - 5 PLN.
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions
+              style={{
+                justifyContent: "center",
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                paddingBottom: "20px",
+              }}
+            >
+              Bleaching of clothes for stain removal costs 5 PLN per piece of
+              cloth (for e.g. Shirt, Jeans, etc.).
+            </CardActions>
+            <CardActions
+              style={{
+                justifyContent: "center",
+              }}
+            ></CardActions>
+          </Card>
+        </Zoom>
       </Grid>
     </Grid>
   );

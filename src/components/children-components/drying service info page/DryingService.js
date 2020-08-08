@@ -9,6 +9,7 @@ import Medium from "../../../assets/15kg.svg";
 import Small from "../../../assets/25kg.svg";
 import Large from "../../../assets/35kg.svg";
 import Grid from "@material-ui/core/Grid";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles({
   services: {
@@ -35,76 +36,82 @@ const DryingService = () => {
       }}
     >
       <Grid item xs={12} sm={6} md={4} lg={4} className={classes.root}>
-        <Card className={classes.services}>
-          <CardActionArea>
-            <CardContent>
-              <img
-                src={Small}
-                alt="15 kg"
-                style={{ width: "10rem", margin: "10px" }}
-              ></img>
-              <Typography gutterBottom variant="h5" component="h2">
-                Quantity - 15 kg
-              </Typography>
-              <Typography variant="body2" color="textPrimary" component="p">
-                Price - 7 PLN.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Typography variant="body1" color="textPrimary" component="p">
-                *Drying is optional and should be checked during checkout.
-              </Typography>
-            </CardActions>
-          </CardActionArea>
-        </Card>
+        <Zoom in={true} timeout={1000}>
+          <Card className={classes.services}>
+            <CardActionArea>
+              <CardContent>
+                <img
+                  src={Small}
+                  alt="15 kg"
+                  style={{ width: "10rem", margin: "10px" }}
+                ></img>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Quantity - 15 kg
+                </Typography>
+                <Typography variant="body2" color="textPrimary" component="p">
+                  Price - 7 PLN.
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Typography variant="body1" color="textPrimary" component="p">
+                  *Drying is optional and should be checked during checkout.
+                </Typography>
+              </CardActions>
+            </CardActionArea>
+          </Card>
+        </Zoom>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4} className={classes.root}>
-        <Card className={classes.services}>
-          <CardActionArea>
-            <CardContent>
-              <img
-                src={Medium}
-                alt="25 kg"
-                style={{ width: "10rem", margin: "10px" }}
-              ></img>
-              <Typography gutterBottom variant="h5" component="h2">
-                Quantity - 25 kg
-              </Typography>
-              <Typography variant="body2" color="textPrimary" component="p">
-                Price - 14 PLN
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Typography variant="body1" color="textPrimary" component="p">
-                *Drying is optional and should be checked during checkout.
-              </Typography>
-            </CardActions>
-          </CardActionArea>
-        </Card>
+        <Zoom in={true} timeout={1300}>
+          <Card className={classes.services}>
+            <CardActionArea>
+              <CardContent>
+                <img
+                  src={Medium}
+                  alt="25 kg"
+                  style={{ width: "10rem", margin: "10px" }}
+                ></img>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Quantity - 25 kg
+                </Typography>
+                <Typography variant="body2" color="textPrimary" component="p">
+                  Price - 14 PLN
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Typography variant="body1" color="textPrimary" component="p">
+                  *Drying is optional and should be checked during checkout.
+                </Typography>
+              </CardActions>
+            </CardActionArea>
+          </Card>
+        </Zoom>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4} className={classes.root}>
-        <Card className={classes.services}>
-          <CardActionArea>
-            <CardContent>
-              <img
-                src={Large}
-                alt="35 kg"
-                style={{ width: "10rem", margin: "10px" }}
-              ></img>
-              <Typography gutterBottom variant="h5" component="h2">
-                Quantity - 35 kg
-              </Typography>
-              <Typography variant="body2" color="textPrimary" component="p">
-                Price - 21 PLN
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Typography variant="body1" color="textPrimary" component="p">
-                *Drying is optional and should be checked during checkout.
-              </Typography>
-            </CardActions>
-          </CardActionArea>
-        </Card>
+        <Zoom in={true} timeout={1600}>
+          <Card className={classes.services}>
+            <CardActionArea>
+              <CardContent>
+                <img
+                  src={Large}
+                  alt="35 kg"
+                  style={{ width: "10rem", margin: "10px" }}
+                ></img>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Quantity - 35 kg
+                </Typography>
+                <Typography variant="body2" color="textPrimary" component="p">
+                  Price - 21 PLN
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Typography variant="body1" color="textPrimary" component="p">
+                  *Drying is optional and should be checked during checkout.
+                </Typography>
+              </CardActions>
+            </CardActionArea>
+          </Card>
+        </Zoom>
       </Grid>
     </Grid>
   );
