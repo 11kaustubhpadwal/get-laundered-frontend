@@ -7,6 +7,7 @@ export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_ERROR = "GET_USER_ERROR";
 export const CLEAR_ERROR = "CLEAR_ERROR";
 export const LOGOUT = "LOGOUT";
+export const SET_AUTH_LOADING = "SET_AUTH_LOADING";
 
 // Orders
 export const GET_ORDERS_SUCCESS = "GET_ORDERS_SUCCESS";

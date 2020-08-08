@@ -9,21 +9,30 @@ import {
   LOGOUT,
   INFO_UPDATE_ERROR,
   CLEAR_UPDATE_ERROR,
+  SET_AUTH_LOADING,
 } from "../actions/types";
 
 const initialState = {
   user: null,
   isAuthenticated: false,
   error: null,
+  authLoading: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SET_AUTH_LOADING: {
+      return {
+        ...state,
+        authLoading: true,
+      };
+    }
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       return {
         ...state,
         isAuthenticated: true,
+        authLoading: false,
       };
     case GET_USER_SUCCESS:
       return {
@@ -38,17 +47,20 @@ export default (state = initialState, action) => {
         user: null,
         isAuthenticated: false,
         error: action.payload,
+        authLoading: false,
       };
     case INFO_UPDATE_ERROR: {
       return {
         ...state,
         error: action.payload,
+        authLoading: false,
       };
     }
     case CLEAR_UPDATE_ERROR: {
       return {
         ...state,
         error: null,
+        authLoading: false,
       };
     }
     case CLEAR_ERROR:
@@ -58,6 +70,7 @@ export default (state = initialState, action) => {
         user: null,
         isAuthenticated: false,
         error: null,
+        authLoading: false,
       };
     default:
       return state;

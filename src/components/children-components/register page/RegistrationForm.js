@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
+import Loader from "../../common/Loader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RegistrationForm = ({
-  auth: { error, isAuthenticated },
+  auth: { error, isAuthenticated, authLoading },
   registerUser,
 }) => {
   const history = useHistory();
@@ -133,15 +134,30 @@ const RegistrationForm = ({
             onChange={handleInputChange("password")}
           />
         </div>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          style={{ margin: "20px" }}
-          type="submit"
-        >
-          Register
-        </Button>
+        {authLoading && (
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            style={{ margin: "20px" }}
+            type="submit"
+            disabled
+          >
+            Register
+          </Button>
+        )}
+        {!authLoading && (
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            style={{ margin: "20px" }}
+            type="submit"
+          >
+            Register
+          </Button>
+        )}
+        {authLoading && <Loader customStyle={{ marginTop: 0 }} />}
       </form>
     </div>
   );

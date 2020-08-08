@@ -10,6 +10,7 @@ import {
   LOGOUT,
   INFO_UPDATE_ERROR,
   CLEAR_UPDATE_ERROR,
+  SET_AUTH_LOADING,
 } from "./types";
 
 // Get logged in user's profile
@@ -38,6 +39,8 @@ export const getUser = () => {
 export const registerUser = (formData) => {
   return async (dispatch) => {
     try {
+      dispatch(setLoading());
+
       const response = await axios({
         method: "post",
         url: "https://get-laundered.herokuapp.com/api/users",
@@ -66,6 +69,8 @@ export const registerUser = (formData) => {
 export const loginUser = (formData) => {
   return async (dispatch) => {
     try {
+      dispatch(setLoading());
+
       const response = await axios({
         method: "post",
         url: "https://get-laundered.herokuapp.com/api/auth",
@@ -121,4 +126,9 @@ export const logoutUser = () => {
     localStorage.removeItem("token");
     dispatch({ type: LOGOUT });
   };
+};
+
+// Set auth loading
+export const setLoading = () => {
+  return { type: SET_AUTH_LOADING };
 };

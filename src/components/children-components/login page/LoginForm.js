@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginForm = ({
-  auth: { isAuthenticated, error },
+  auth: { isAuthenticated, error, authLoading },
   passwordReset: { emailSendError, emailSent, loading },
   loginUser,
   sendEmail,
@@ -113,15 +113,30 @@ const LoginForm = ({
             onChange={handleInputChange("password")}
           />
         </div>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          style={{ margin: "20px" }}
-          type="submit"
-        >
-          Login
-        </Button>
+        {authLoading && (
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            style={{ margin: "20px" }}
+            type="submit"
+            disabled
+          >
+            Login
+          </Button>
+        )}
+        {!authLoading && (
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            style={{ margin: "20px" }}
+            type="submit"
+          >
+            Login
+          </Button>
+        )}
+        {authLoading && <Loader customStyle={{ marginTop: 0 }} />}
       </form>
       <div style={{ marginTop: "20px", marginBottom: "100px" }}>
         {loading && <Loader customStyle={{ marginTop: 0 }} />}
