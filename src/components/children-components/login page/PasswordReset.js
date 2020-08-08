@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import PropTypes from "prop-types";
 import Slide from "@material-ui/core/Slide";
+import Typography from "@material-ui/core/Typography";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -37,10 +38,14 @@ const PasswordReset = ({ open, handleClose, sendEmail }) => {
           {"Forgot password?"}
         </DialogTitle>
         <DialogContent>
-          <p style={{ marginBottom: "20px", marginTop: 0 }}>
+          <Typography
+            variant="body1"
+            gutterBottom
+            style={{ marginBottom: "20px", marginTop: 0 }}
+          >
             Please enter your email address to get the link to reset your
             account's password.
-          </p>
+          </Typography>
           <TextField
             label="Email Address"
             type="email"

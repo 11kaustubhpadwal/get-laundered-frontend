@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Home from "./components/routes/Home";
 import About from "./components/routes/About";
 import Login from "./components/routes/Login";
@@ -39,12 +40,18 @@ const theme = createMuiTheme({
   },
 });
 
+const useStyles = makeStyles((theme) => ({
+  root: { ...theme.typography.body1 },
+}));
+
 function App() {
+  const classes = useStyles();
+
   return (
     <Provider store={store}>
       <Router>
         <ThemeProvider theme={theme}>
-          <div>
+          <div className={classes.root}>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />

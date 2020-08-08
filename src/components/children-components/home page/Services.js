@@ -11,6 +11,7 @@ import Washing from "../../../assets/washing.svg";
 import Drying from "../../../assets/drying.svg";
 import Bleaching from "../../../assets/bleaching.svg";
 import Grid from "@material-ui/core/Grid";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles((theme) => ({
   services: {
@@ -37,82 +38,88 @@ const Services = () => {
       }}
     >
       <Grid item xs={12} sm={6} md={4} lg={4} className={classes.root}>
-        <Card className={classes.services}>
-          <CardActionArea>
-            <CardContent>
-              <img
-                src={Washing}
-                alt="Washing"
-                style={{ width: "10rem", margin: "10px" }}
-              ></img>
-              <Typography gutterBottom variant="h5" component="h2">
-                Washing
-              </Typography>
-              <Typography variant="body2" color="textPrimary" component="p">
-                Clothes washing from 17 PLN (20kg).
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions style={{ justifyContent: "center" }}>
-            <Link to="/washing" style={{ textDecoration: "none" }}>
-              <Button size="small" color="black">
-                choose
-              </Button>
-            </Link>
-          </CardActions>
-        </Card>
+        <Zoom in={true} timeout={1000}>
+          <Card className={classes.services}>
+            <CardActionArea>
+              <CardContent>
+                <img
+                  src={Washing}
+                  alt="Washing"
+                  style={{ width: "10rem", margin: "10px" }}
+                ></img>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Washing
+                </Typography>
+                <Typography variant="body2" color="textPrimary" component="p">
+                  Clothes washing from 17 PLN (20kg).
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions style={{ justifyContent: "center" }}>
+              <Link to="/washing" style={{ textDecoration: "none" }}>
+                <Button size="small" color="black">
+                  choose
+                </Button>
+              </Link>
+            </CardActions>
+          </Card>
+        </Zoom>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4} className={classes.root}>
-        <Card className={classes.services}>
-          <CardActionArea>
-            <CardContent>
-              <img
-                src={Drying}
-                alt="Drying"
-                style={{ width: "10rem", margin: "10px" }}
-              ></img>
-              <Typography gutterBottom variant="h5" component="h2">
-                Drying
-              </Typography>
-              <Typography variant="body2" color="textPrimary" component="p">
-                Clothes drying from 7 PLN (20kg).
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions style={{ justifyContent: "center" }}>
-            <Link to="/drying" style={{ textDecoration: "none" }}>
-              <Button size="small" color="black">
-                choose
-              </Button>
-            </Link>
-          </CardActions>
-        </Card>
+        <Zoom in={true} timeout={1300}>
+          <Card className={classes.services}>
+            <CardActionArea>
+              <CardContent>
+                <img
+                  src={Drying}
+                  alt="Drying"
+                  style={{ width: "10rem", margin: "10px" }}
+                ></img>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Drying
+                </Typography>
+                <Typography variant="body2" color="textPrimary" component="p">
+                  Clothes drying from 7 PLN (20kg).
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions style={{ justifyContent: "center" }}>
+              <Link to="/drying" style={{ textDecoration: "none" }}>
+                <Button size="small" color="black">
+                  choose
+                </Button>
+              </Link>
+            </CardActions>
+          </Card>
+        </Zoom>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={4} className={classes.root}>
-        <Card className={classes.services}>
-          <CardActionArea>
-            <CardContent>
-              <img
-                src={Bleaching}
-                alt="Bleaching"
-                style={{ width: "10rem", margin: "10px" }}
-              ></img>
-              <Typography gutterBottom variant="h5" component="h2">
-                Bleaching
-              </Typography>
-              <Typography variant="body2" color="textPrimary" component="p">
-                Clothes bleaching from 5 PLN.
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions style={{ justifyContent: "center" }}>
-            <Link to="/bleaching" style={{ textDecoration: "none" }}>
-              <Button size="small" color="black">
-                choose
-              </Button>
-            </Link>
-          </CardActions>
-        </Card>
+        <Zoom in={true} timeout={1600}>
+          <Card className={classes.services}>
+            <CardActionArea>
+              <CardContent>
+                <img
+                  src={Bleaching}
+                  alt="Bleaching"
+                  style={{ width: "10rem", margin: "10px" }}
+                ></img>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Bleaching
+                </Typography>
+                <Typography variant="body2" color="textPrimary" component="p">
+                  Clothes bleaching from 5 PLN.
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions style={{ justifyContent: "center" }}>
+              <Link to="/bleaching" style={{ textDecoration: "none" }}>
+                <Button size="small" color="black">
+                  choose
+                </Button>
+              </Link>
+            </CardActions>
+          </Card>
+        </Zoom>
       </Grid>
     </Grid>
   );
