@@ -47,7 +47,7 @@ const BleachingService = () => {
                   Quantity - 1
                 </Typography>
                 <Typography variant="body2" color="textPrimary" component="p">
-                  Price - 5 PLN.
+                  Price - 5 PLN
                 </Typography>
               </CardContent>
             </CardActionArea>

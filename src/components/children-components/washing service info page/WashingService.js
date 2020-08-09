@@ -48,7 +48,7 @@ const WashingService = () => {
                   Quantity - 15 kg
                 </Typography>
                 <Typography variant="body2" color="textPrimary" component="p">
-                  Price - 17 PLN.
+                  Price - 17 PLN
                 </Typography>
               </CardContent>
             </CardActionArea>

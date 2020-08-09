@@ -49,7 +49,7 @@ const DryingService = () => {
                   Quantity - 15 kg
                 </Typography>
                 <Typography variant="body2" color="textPrimary" component="p">
-                  Price - 7 PLN.
+                  Price - 7 PLN
                 </Typography>
               </CardContent>
               <CardActions>
