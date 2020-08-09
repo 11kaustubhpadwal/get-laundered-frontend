@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -184,7 +185,9 @@ const NewOrderForm = (props) => {
   return (
     <form className={classes.root} autoComplete="off" onSubmit={handleSubmit}>
       <div>
-        <p style={{ fontWeight: 600 }}>Please enter your personal details - </p>
+        <Typography variant="body1" gutterBottom style={{ fontWeight: "700" }}>
+          Please enter your personal details -
+        </Typography>
         <TextField
           required
           name="firstName"
@@ -202,7 +205,13 @@ const NewOrderForm = (props) => {
         />
       </div>
       <div style={{ marginTop: "30px" }}>
-        <p style={{ fontWeight: 600 }}>Please select a service - </p>
+        <Typography
+          variant="body1"
+          gutterBottom
+          style={{ fontWeight: "700", marginBottom: "20px" }}
+        >
+          Please select a service -{" "}
+        </Typography>
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel>Service *</InputLabel>
           <Select
@@ -216,7 +225,17 @@ const NewOrderForm = (props) => {
         </FormControl>
         {washing && (
           <Fragment>
-            <p style={{ fontWeight: 600 }}>Please select quantity - </p>
+            <Typography
+              variant="body1"
+              gutterBottom
+              style={{
+                fontWeight: "700",
+                marginBottom: "20px",
+                marginTop: "20px",
+              }}
+            >
+              Please select quantity -{" "}
+            </Typography>
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel>Quantity *</InputLabel>
               <Select
@@ -233,9 +252,17 @@ const NewOrderForm = (props) => {
         )}
         {bleaching && (
           <Fragment>
-            <p style={{ fontWeight: 600 }}>
+            <Typography
+              variant="body1"
+              gutterBottom
+              style={{
+                fontWeight: "700",
+                marginBottom: "20px",
+                marginTop: "20px",
+              }}
+            >
               Please enter the number of clothes -{" "}
-            </p>
+            </Typography>
             <TextField
               value={clothes}
               onChange={handleClothesChange}
@@ -246,9 +273,13 @@ const NewOrderForm = (props) => {
           </Fragment>
         )}
         <div style={{ marginTop: "30px" }}>
-          <p style={{ fontWeight: 600 }}>
+          <Typography
+            variant="body1"
+            gutterBottom
+            style={{ fontWeight: "700", marginBottom: "15px" }}
+          >
             Please select if you want the optional drying service -{" "}
-          </p>
+          </Typography>
           {disableSelection ? (
             <FormControlLabel
               control={
@@ -278,9 +309,13 @@ const NewOrderForm = (props) => {
         </div>
       </div>
       <div style={{ marginTop: "30px" }}>
-        <p style={{ fontWeight: 600 }}>
+        <Typography
+          variant="body1"
+          gutterBottom
+          style={{ fontWeight: "700", marginBottom: "20px" }}
+        >
           Please select a date and time for pickup -{" "}
-        </p>
+        </Typography>
         <TextField
           id="datetime-local"
           required
@@ -296,9 +331,13 @@ const NewOrderForm = (props) => {
         />
       </div>
       <div style={{ marginTop: "30px" }}>
-        <p style={{ fontWeight: 600 }}>
+        <Typography
+          variant="body1"
+          gutterBottom
+          style={{ fontWeight: "700", marginBottom: "20px" }}
+        >
           Please enter your address for pickup and delivery -{" "}
-        </p>
+        </Typography>
         <TextField
           required
           fullWidth
@@ -311,7 +350,13 @@ const NewOrderForm = (props) => {
         />
       </div>
       <div style={{ marginTop: "30px" }}>
-        <p style={{ fontWeight: 600 }}>Please select a payment method -</p>
+        <Typography
+          variant="body1"
+          gutterBottom
+          style={{ fontWeight: "700", marginBottom: "20px" }}
+        >
+          Please select a payment method -
+        </Typography>
         <FormControlLabel
           control={
             <Checkbox
@@ -340,9 +385,9 @@ const NewOrderForm = (props) => {
         />
       </div>
       <div style={{ marginTop: "30px" }}>
-        <p>
-          <strong>Total - {finalAmount} PLN</strong>
-        </p>
+        <Typography variant="body1" gutterBottom style={{ fontWeight: "700" }}>
+          Total - {finalAmount} PLN
+        </Typography>
       </div>
       <div style={{ marginTop: "30px" }}>
         {error !== false && (
