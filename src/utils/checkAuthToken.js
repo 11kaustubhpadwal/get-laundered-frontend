@@ -10,7 +10,6 @@ if (token) {
       const response = jwt.verify(token, process.env.REACT_APP_JWT_SECRET);
       return response;
     } catch (error) {
-      console.log(error);
       return error;
     }
   };
