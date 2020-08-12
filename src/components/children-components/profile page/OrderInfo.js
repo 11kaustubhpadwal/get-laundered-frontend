@@ -50,8 +50,8 @@ const OrderInfo = ({ order }) => {
                 order.orderStatus === "Cancelled"
                   ? "secondary"
                   : order.orderStatus === "Completed"
-                  ? "default"
-                  : "primary"
+                  ? "primary"
+                  : "default"
               }
             />
           </Typography>

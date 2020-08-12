@@ -57,7 +57,11 @@ const OrdersList = ({ orders, cancelOrder }) => {
                       {order.placedOn.toString().slice(0, 10)}
                     </TableCell>
                     <TableCell align="center">
-                      <Chip label={order.orderStatus} color="primary" />
+                      <Chip
+                        label={order.orderStatus}
+                        variant="outlined"
+                        color="default"
+                      />
                     </TableCell>
                     <TableCell align="center">
                       <ConfirmOrderCancel
@@ -80,11 +84,7 @@ const OrdersList = ({ orders, cancelOrder }) => {
                       {order.placedOn.toString().slice(0, 10)}
                     </TableCell>
                     <TableCell align="center">
-                      <Chip
-                        label={order.orderStatus}
-                        variant="outlined"
-                        color="primary"
-                      />
+                      <Chip label={order.orderStatus} color="primary" />
                     </TableCell>
                     <TableCell align="center">
                       <Button variant="contained" color="secondary" disabled>
@@ -106,7 +106,7 @@ const OrdersList = ({ orders, cancelOrder }) => {
                       {order.placedOn.toString().slice(0, 10)}
                     </TableCell>
                     <TableCell align="center">
-                      <Chip label={order.orderStatus} variant="outlined" />
+                      <Chip label={order.orderStatus} color="secondary" />
                     </TableCell>
                     <TableCell align="center">
                       <Button variant="contained" color="secondary" disabled>
