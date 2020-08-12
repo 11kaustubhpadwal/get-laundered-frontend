@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "@material-ui/core/Container";
 import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
@@ -8,44 +8,32 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Loader from "../common/Loader";
+import { getOrdersList } from "../../actions/orderActions";
 
-const orders = {
-  orders: [
-    {
-      _id: "5f314968df593700178944f0",
-      orderStatus: "In progress",
-      orderNumber: "A24A130",
-      referenceNumber: "5f314949df593700178944ef",
-      firstName: "Lisa",
-      lastName: "Ann",
-      service: "Washing",
-      optionalService: "false",
-      quantity: 15,
-      numberOfClothes: 0,
-      pickupDate: "2020-08-11",
-      pickupTime: "15:19",
-      address: "Ul. Unicka 5, 908, 20-180.",
-      paymentMethod: "Card",
-      totalAmount: 17,
-      placedOn: 1597065576393,
-      __v: 0,
-    },
-  ],
-};
+const Employee = ({
+  auth: { isAuthenticated, user },
+  getOrdersList,
+  orders,
+}) => {
+  useEffect(() => {
+    getOrdersList();
+  }, []);
 
-const Employee = ({ auth: { isAuthenticated, user, error } }) => {
   if (!isAuthenticated) {
     return <Redirect to="/login" />;
   }
 
-  if (isAuthenticated && user === null) {
+  if (
+    (isAuthenticated && user === null) ||
+    (isAuthenticated && orders === [])
+  ) {
     return <Loader />;
   }
 
   return (
     <Container maxWidth="lg">
       <Navbar />
-      <EmployeeInfo />
+      <EmployeeInfo user={user} />
       <Orders
         orders={orders}
         cancelOrder={() => {
@@ -62,10 +50,13 @@ const Employee = ({ auth: { isAuthenticated, user, error } }) => {
 
 Employee.propTypes = {
   auth: PropTypes.object.isRequired,
+  orders: PropTypes.object.isRequired,
+  getOrdersList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  orders: state.order,
 });
 
-export default connect(mapStateToProps)(Employee);
+export default connect(mapStateToProps, { getOrdersList })(Employee);

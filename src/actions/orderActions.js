@@ -38,6 +38,32 @@ export const getOrders = () => {
   };
 };
 
+// Get logged a list of all orders for employees
+export const getOrdersList = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://get-laundered.herokuapp.com/api/employees/orders",
+        headers: { "x-auth-token": localStorage.getItem("token") },
+      });
+
+      dispatch({ type: GET_ORDERS_SUCCESS, payload: response.data });
+    } catch (error) {
+      localStorage.removeItem("token");
+      dispatch({
+        type: GET_ORDERS_ERROR,
+        payload:
+          "Failed to get list of orders. Please refresh the page and try again.",
+      });
+
+      setTimeout(() => {
+        dispatch({ type: CLEAR_TOASTS });
+      }, 8000);
+    }
+  };
+};
+
 // Place a new order
 export const placeOrder = (formData) => {
   return async (dispatch) => {

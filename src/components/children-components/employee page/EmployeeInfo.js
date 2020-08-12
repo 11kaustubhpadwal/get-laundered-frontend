@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-const EmployeeInfo = () => {
+const EmployeeInfo = ({ user }) => {
   const classes = useStyles();
 
   return (
@@ -36,14 +36,14 @@ const EmployeeInfo = () => {
               gutterBottom
               style={{ marginTop: "30px" }}
             >
-              First Name Last Name
+              {user.firstName + " " + user.lastName}
             </Typography>
             <Typography
               variant="body1"
               gutterBottom
               style={{ marginTop: "10px" }}
             >
-              Employee ID - <strong>ID</strong>
+              Employee ID - <strong>{user.employeeID}</strong>
             </Typography>
           </CardContent>
         </Card>
