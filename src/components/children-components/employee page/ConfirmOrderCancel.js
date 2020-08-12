@@ -42,6 +42,7 @@ const ConfirmOrderCancel = ({ orderID, cancelOrder }) => {
           <Button
             onClick={() => {
               cancelOrder(orderID);
+              handleClose();
             }}
           >
             Yes

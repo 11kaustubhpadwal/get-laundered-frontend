@@ -44,6 +44,7 @@ const ConfirmOrderComplete = ({ orderID, completeOrder }) => {
           <Button
             onClick={() => {
               completeOrder(orderID);
+              handleClose();
             }}
           >
             Yes

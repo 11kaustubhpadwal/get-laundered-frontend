@@ -5,6 +5,8 @@ import {
   PLACE_ORDER_SUCCESS,
   CANCEL_ORDER_ERROR,
   CANCEL_ORDER_SUCCESS,
+  COMPLETE_ORDER_ERROR,
+  COMPLETE_ORDER_SUCCESS,
   CLEAR_TOASTS,
 } from "./types";
 import axios from "axios";
@@ -25,32 +27,6 @@ export const getOrders = () => {
         dispatch({ type: CLEAR_TOASTS });
       }, 8000);
     } catch (error) {
-      dispatch({
-        type: GET_ORDERS_ERROR,
-        payload:
-          "Failed to get list of orders. Please refresh the page and try again.",
-      });
-
-      setTimeout(() => {
-        dispatch({ type: CLEAR_TOASTS });
-      }, 8000);
-    }
-  };
-};
-
-// Get logged a list of all orders for employees
-export const getOrdersList = () => {
-  return async (dispatch) => {
-    try {
-      const response = await axios({
-        method: "get",
-        url: "https://get-laundered.herokuapp.com/api/employees/orders",
-        headers: { "x-auth-token": localStorage.getItem("token") },
-      });
-
-      dispatch({ type: GET_ORDERS_SUCCESS, payload: response.data });
-    } catch (error) {
-      localStorage.removeItem("token");
       dispatch({
         type: GET_ORDERS_ERROR,
         payload:
@@ -114,6 +90,94 @@ export const cancelOrder = (orderID) => {
       dispatch({
         type: CANCEL_ORDER_ERROR,
         payload: "Failed to cancel your order. Please try again.",
+      });
+
+      setTimeout(() => {
+        dispatch({ type: CLEAR_TOASTS });
+      }, 8000);
+    }
+  };
+};
+
+// Get logged a list of all orders for employees
+export const getOrdersList = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://get-laundered.herokuapp.com/api/employees/orders",
+        headers: { "x-auth-token": localStorage.getItem("token") },
+      });
+
+      dispatch({ type: GET_ORDERS_SUCCESS, payload: response.data });
+
+      setTimeout(() => {
+        dispatch({ type: CLEAR_TOASTS });
+      }, 8000);
+    } catch (error) {
+      localStorage.removeItem("token");
+      dispatch({
+        type: GET_ORDERS_ERROR,
+        payload:
+          "Failed to get list of orders. Please refresh the page and try again.",
+      });
+
+      setTimeout(() => {
+        dispatch({ type: CLEAR_TOASTS });
+      }, 8000);
+    }
+  };
+};
+
+// Cancel an order by the employee
+export const cancelOrderEmployee = (orderID) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "patch",
+        url: `https://get-laundered.herokuapp.com/api/employees/orders/${orderID}`,
+        headers: { "x-auth-token": localStorage.getItem("token") },
+      });
+
+      dispatch({
+        type: CANCEL_ORDER_SUCCESS,
+        payload: "The order has been cancelled.",
+      });
+
+      dispatch(getOrdersList());
+    } catch (error) {
+      dispatch({
+        type: CANCEL_ORDER_ERROR,
+        payload: "Failed to cancel the order. Please try again.",
+      });
+
+      setTimeout(() => {
+        dispatch({ type: CLEAR_TOASTS });
+      }, 8000);
+    }
+  };
+};
+
+// Complete an order by the employee
+export const completeOrderEmployee = (orderID) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios({
+        method: "patch",
+        url: `https://get-laundered.herokuapp.com/api/employees/orders/complete/${orderID}`,
+        headers: { "x-auth-token": localStorage.getItem("token") },
+      });
+
+      dispatch({
+        type: COMPLETE_ORDER_SUCCESS,
+        payload: "The order has been completed.",
+      });
+
+      dispatch(getOrdersList());
+    } catch (error) {
+      dispatch({
+        type: COMPLETE_ORDER_ERROR,
+        payload: "Failed to complete the order. Please try again.",
       });
 
       setTimeout(() => {
