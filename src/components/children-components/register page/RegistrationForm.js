@@ -24,17 +24,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RegistrationForm = ({
-  auth: { error, isAuthenticated, authLoading },
+  auth: { error, isAuthenticated, authLoading, user },
   registerUser,
 }) => {
   const history = useHistory();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      history.push("/profile");
+    if (isAuthenticated && user !== null) {
+      if (user.role === "User") {
+        history.push("/profile");
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user]);
 
   const classes = useStyles();
 

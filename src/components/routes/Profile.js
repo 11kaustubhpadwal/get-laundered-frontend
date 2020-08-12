@@ -70,6 +70,7 @@ const Profile = ({
 
 Profile.propTypes = {
   auth: PropTypes.object.isRequired,
+  orders: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

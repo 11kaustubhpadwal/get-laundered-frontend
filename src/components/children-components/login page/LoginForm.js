@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginForm = ({
-  auth: { isAuthenticated, error, authLoading },
+  auth: { isAuthenticated, error, authLoading, user },
   passwordReset: { emailSendError, emailSent, loading },
   loginUser,
   sendEmail,
@@ -35,11 +35,16 @@ const LoginForm = ({
   const history = useHistory();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      history.push("/profile");
+    if (isAuthenticated && user !== null) {
+      if (user.role === "User") {
+        history.push("/profile");
+      }
+      if (user.role === "Employee") {
+        history.push("/employee");
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user]);
 
   const classes = useStyles();
 

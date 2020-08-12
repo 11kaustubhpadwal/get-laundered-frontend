@@ -28,14 +28,56 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = ({ auth: { isAuthenticated }, logoutUser }) => {
+const Navbar = ({ auth: { isAuthenticated, user }, logoutUser }) => {
   const classes = useStyles();
 
   const logout = () => {
     logoutUser();
   };
 
-  if (!isAuthenticated) {
+  if (isAuthenticated && user !== null) {
+    return (
+      <Grid
+        container
+        spacing={1}
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.root}
+      >
+        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
+          <Link to="/" className={classes.link}>
+            Home
+          </Link>
+        </Grid>
+        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
+          <Link to="/about" className={classes.link}>
+            About
+          </Link>
+        </Grid>
+        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
+          <img src={Logo} alt="Logo" className={classes.logo}></img>
+        </Grid>
+        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
+          {user.role === "User" && (
+            <Link to="/profile" className={classes.link}>
+              Profile
+            </Link>
+          )}
+          {user.role === "Employee" && (
+            <Link to="/employee" className={classes.link}>
+              Profile
+            </Link>
+          )}
+        </Grid>
+        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
+          <Link to="#" className={classes.link} onClick={logout}>
+            Logout
+          </Link>
+        </Grid>
+      </Grid>
+    );
+  } else {
     return (
       <Grid
         container
@@ -71,47 +113,11 @@ const Navbar = ({ auth: { isAuthenticated }, logoutUser }) => {
       </Grid>
     );
   }
-
-  if (isAuthenticated) {
-    return (
-      <Grid
-        container
-        spacing={1}
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.root}
-      >
-        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
-          <Link to="/" className={classes.link}>
-            Home
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
-          <Link to="/about" className={classes.link}>
-            About
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
-          <img src={Logo} alt="Logo" className={classes.logo}></img>
-        </Grid>
-        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
-          <Link to="/profile" className={classes.link}>
-            Profile
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={2} md={2} lg={2} className={classes.link}>
-          <Link to="#" className={classes.link} onClick={logout}>
-            Logout
-          </Link>
-        </Grid>
-      </Grid>
-    );
-  }
 };
 
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

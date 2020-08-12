@@ -4,6 +4,10 @@ import Navbar from "../common/Navbar";
 import Footer from "../common/Footer";
 import EmployeeInfo from "../children-components/employee page/EmployeeInfo";
 import Orders from "../children-components/employee page/Orders";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Loader from "../common/Loader";
 
 const orders = {
   orders: [
@@ -29,7 +33,15 @@ const orders = {
   ],
 };
 
-const Employee = () => {
+const Employee = ({ auth: { isAuthenticated, user, error } }) => {
+  if (!isAuthenticated) {
+    return <Redirect to="/login" />;
+  }
+
+  if (isAuthenticated && user === null) {
+    return <Loader />;
+  }
+
   return (
     <Container maxWidth="lg">
       <Navbar />
@@ -48,4 +60,12 @@ const Employee = () => {
   );
 };
 
-export default Employee;
+Employee.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Employee);

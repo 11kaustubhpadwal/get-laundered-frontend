@@ -32,12 +32,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        authLoading: false,
       };
     case GET_USER_SUCCESS:
       return {
         ...state,
         user: action.payload,
+        authLoading: false,
       };
     case REGISTER_ERROR:
     case LOGIN_ERROR:
