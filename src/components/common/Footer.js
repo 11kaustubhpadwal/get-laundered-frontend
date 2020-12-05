@@ -19,7 +19,6 @@ const Footer = () => {
       >
         www.flaticon.com
       </a>
-      <div style={{ margin: "20px" }}>Created by Sherzod Kamilov.</div>
     </footer>
   );
 };
