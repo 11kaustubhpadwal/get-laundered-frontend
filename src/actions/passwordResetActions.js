@@ -1,13 +1,14 @@
 import {
-  SEND_EMAIL_ERROR,
-  SEND_EMAIL_SUCCESS,
   CLEAR_FEEDBACK,
-  VERIFY_LINK_ERROR,
-  VERIFY_LINK_SUCCESS,
   PASSWORD_UPDATE_ERROR,
   PASSWORD_UPDATE_SUCCESS,
+  SEND_EMAIL_ERROR,
+  SEND_EMAIL_SUCCESS,
   SET_LOADING,
+  VERIFY_LINK_ERROR,
+  VERIFY_LINK_SUCCESS,
 } from "./types";
+
 import axios from "axios";
 
 // Send password reset link to the email address provided
@@ -18,7 +19,7 @@ export const sendEmail = (email) => {
 
       const response = await axios({
         method: "post",
-        url: "https://get-laundered.herokuapp.com/api/users/forgot-password",
+        url: `${process.env.REACT_APP_BASE_URL}api/users/forgot-password`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -62,8 +63,7 @@ export const verifyLink = (token) => {
       const response = await axios({
         method: "get",
         url:
-          "https://get-laundered.herokuapp.com/api/users/forgot-password/" +
-          token,
+          `${process.env.REACT_APP_BASE_URL}api/users/forgot-password/` + token,
       });
 
       dispatch({ type: VERIFY_LINK_SUCCESS, payload: response.data.msg });
@@ -82,8 +82,7 @@ export const updatePassword = (token, password) => {
       const response = await axios({
         method: "patch",
         url:
-          "https://get-laundered.herokuapp.com/api/users/update-password/" +
-          token,
+          `${process.env.REACT_APP_BASE_URL}api/users/update-password/` + token,
         data: {
           password: password,
         },

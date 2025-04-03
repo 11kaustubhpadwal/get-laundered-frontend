@@ -1,14 +1,15 @@
 import {
+  CANCEL_ORDER_ERROR,
+  CANCEL_ORDER_SUCCESS,
+  CLEAR_TOASTS,
+  COMPLETE_ORDER_ERROR,
+  COMPLETE_ORDER_SUCCESS,
   GET_ORDERS_ERROR,
   GET_ORDERS_SUCCESS,
   PLACE_ORDER_ERROR,
   PLACE_ORDER_SUCCESS,
-  CANCEL_ORDER_ERROR,
-  CANCEL_ORDER_SUCCESS,
-  COMPLETE_ORDER_ERROR,
-  COMPLETE_ORDER_SUCCESS,
-  CLEAR_TOASTS,
 } from "./types";
+
 import axios from "axios";
 
 // Get a list of all orders
@@ -17,7 +18,7 @@ export const getOrders = () => {
     try {
       const response = await axios({
         method: "get",
-        url: "https://get-laundered.herokuapp.com/api/orders",
+        url: `${process.env.REACT_APP_BASE_URL}api/orders`,
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
 
@@ -46,7 +47,7 @@ export const placeOrder = (formData) => {
     try {
       const response = await axios({
         method: "post",
-        url: "https://get-laundered.herokuapp.com/api/orders",
+        url: `${process.env.REACT_APP_BASE_URL}api/orders`,
         headers: { "x-auth-token": localStorage.getItem("token") },
         data: formData,
       });
@@ -76,7 +77,7 @@ export const cancelOrder = (orderID) => {
     try {
       const response = await axios({
         method: "patch",
-        url: `https://get-laundered.herokuapp.com/api/orders/${orderID}`,
+        url: `${process.env.REACT_APP_BASE_URL}api/orders/${orderID}`,
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
 
@@ -105,7 +106,7 @@ export const getOrdersList = () => {
     try {
       const response = await axios({
         method: "get",
-        url: "https://get-laundered.herokuapp.com/api/employees/orders",
+        url: `${process.env.REACT_APP_BASE_URL}api/employees/orders`,
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
 
@@ -135,7 +136,7 @@ export const cancelOrderEmployee = (orderID) => {
     try {
       const response = await axios({
         method: "patch",
-        url: `https://get-laundered.herokuapp.com/api/employees/orders/${orderID}`,
+        url: `${process.env.REACT_APP_BASE_URL}api/employees/orders/${orderID}`,
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
 
@@ -164,7 +165,7 @@ export const completeOrderEmployee = (orderID) => {
     try {
       const response = await axios({
         method: "patch",
-        url: `https://get-laundered.herokuapp.com/api/employees/orders/complete/${orderID}`,
+        url: `${process.env.REACT_APP_BASE_URL}api/employees/orders/complete/${orderID}`,
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
 

@@ -1,17 +1,18 @@
-import axios from "axios";
 import {
-  REGISTER_SUCCESS,
-  REGISTER_ERROR,
   CLEAR_ERROR,
+  CLEAR_UPDATE_ERROR,
   GET_USER_ERROR,
   GET_USER_SUCCESS,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  LOGOUT,
   INFO_UPDATE_ERROR,
-  CLEAR_UPDATE_ERROR,
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  REGISTER_ERROR,
+  REGISTER_SUCCESS,
   SET_AUTH_LOADING,
 } from "./types";
+
+import axios from "axios";
 
 // Get logged in user's profile
 export const getUser = () => {
@@ -19,7 +20,7 @@ export const getUser = () => {
     try {
       const response = await axios({
         method: "get",
-        url: "https://get-laundered.herokuapp.com/api/auth",
+        url: `${process.env.REACT_APP_BASE_URL}api/auth`,
         headers: { "x-auth-token": localStorage.getItem("token") },
       });
 
@@ -43,7 +44,7 @@ export const registerUser = (formData) => {
 
       const response = await axios({
         method: "post",
-        url: "https://get-laundered.herokuapp.com/api/users",
+        url: `${process.env.REACT_APP_BASE_URL}api/users`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -73,7 +74,7 @@ export const loginUser = (formData) => {
 
       const response = await axios({
         method: "post",
-        url: "https://get-laundered.herokuapp.com/api/auth",
+        url: `${process.env.REACT_APP_BASE_URL}api/auth`,
         headers: {
           "Content-Type": "application/json",
         },
@@ -101,7 +102,7 @@ export const updateInfo = (formData) => {
     try {
       const response = await axios({
         method: "patch",
-        url: "https://get-laundered.herokuapp.com/api/users",
+        url: `${process.env.REACT_APP_BASE_URL}api/users`,
         headers: {
           "Content-Type": "application/json",
           "x-auth-token": localStorage.getItem("token"),
